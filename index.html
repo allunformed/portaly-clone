@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>justfont | Instagram, Facebook, YouTube | Portaly</title>
+    <meta name="description" content="新世代字型設計暨推廣教育團隊" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#7ebd5c' },
+                    aspectRatio: { '2/1': '2 / 1' },
+                    fontFamily: { sans: ['"Noto Sans TC"', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* pseudo-elements & JS-toggled states only */
+        .slide a::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.18) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .double-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .dot.active {
+            background: #7ebd5c;
+            transform: scale(1.2);
+        }
+
+        .block-anim {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .block-anim.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8f8f8] font-sans text-[#333333] min-h-screen">
+
+    <div class="max-w-[480px] mx-auto px-4 pt-6 pb-10">
+
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center mb-5">
+            <div class="relative w-24 h-24 mb-3">
+                <img src="images/avatar.png" alt="justfont"
+                    class="w-24 h-24 rounded-full object-cover border-[3px] border-primary" />
+                <div
+                    class="absolute bottom-0.5 right-0.5 w-[22px] h-[22px] bg-primary rounded-full border-2 border-white flex items-center justify-center">
+                    <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="text-[22px] font-bold text-[#1a1a1a] leading-snug">justfont</div>
+            <div class="text-[13px] text-[#666] mt-1 leading-relaxed">新世代字型設計暨推廣教育團隊</div>
+        </div>
+
+        <!-- Social Bar -->
+        <div class="flex justify-center gap-2 mt-3.5 mb-5">
+            <a href="https://justfont.com" target="_blank" rel="noopener" title="Website"
+                class="w-10 h-10 rounded-full flex items-center justify-center border border-[#d0d0d0] text-[#555] no-underline transition-colors duration-200 hover:border-primary hover:text-primary">
+                <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+            </a>
+            <a href="mailto:just@justfont.com" title="Email"
+                class="w-10 h-10 rounded-full flex items-center justify-center border border-[#d0d0d0] text-[#555] no-underline transition-colors duration-200 hover:border-primary hover:text-primary">
+                <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+            </a>
+            <a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=justfont" target="_blank" rel="noopener"
+                title="LINE"
+                class="w-10 h-10 rounded-full flex items-center justify-center border border-[#d0d0d0] text-[#555] no-underline transition-colors duration-200 hover:border-primary hover:text-primary">
+                <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+                </svg>
+            </a>
+            <a href="https://www.youtube.com/watch?v=8YlZpqjzGZU&list=PLu-dyDh514xwRGKu-LafA7rLaCziwd9Ho"
+                target="_blank" rel="noopener" title="YouTube"
+                class="w-10 h-10 rounded-full flex items-center justify-center border border-[#d0d0d0] text-[#555] no-underline transition-colors duration-200 hover:border-primary hover:text-primary">
+                <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+            </a>
+            <a href="https://podcasts.apple.com/tw/podcast/" target="_blank" rel="noopener" title="Podcast"
+                class="w-10 h-10 rounded-full flex items-center justify-center border border-[#d0d0d0] text-[#555] no-underline transition-colors duration-200 hover:border-primary hover:text-primary">
+                <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M5.34 0A5.328 5.328 0 0 0 0 5.34v13.32A5.328 5.328 0 0 0 5.34 24h13.32A5.328 5.328 0 0 0 24 18.66V5.34A5.328 5.328 0 0 0 18.66 0zm6.66 4.08a7.88 7.88 0 0 1 7.88 7.88 7.88 7.88 0 0 1-7.88 7.88A7.88 7.88 0 0 1 4.12 11.96 7.88 7.88 0 0 1 12 4.08zm0 1.52a6.36 6.36 0 0 0-6.36 6.36A6.36 6.36 0 0 0 12 18.32a6.36 6.36 0 0 0 6.36-6.36A6.36 6.36 0 0 0 12 5.6zm0 2.04a4.32 4.32 0 0 1 4.32 4.32 4.32 4.32 0 0 1-4.32 4.32A4.32 4.32 0 0 1 7.68 11.96 4.32 4.32 0 0 1 12 7.64zm0 1.68a2.64 2.64 0 0 0-2.64 2.64A2.64 2.64 0 0 0 12 14.6a2.64 2.64 0 0 0 2.64-2.64A2.64 2.64 0 0 0 12 9.32zm0 1.2a1.44 1.44 0 0 1 1.44 1.44A1.44 1.44 0 0 1 12 13.4a1.44 1.44 0 0 1-1.44-1.44A1.44 1.44 0 0 1 12 10.52zm-1.2 3.64c-.08.4-.16 1.04-.16 1.44 0 .76.6 1.36 1.36 1.36s1.36-.6 1.36-1.36c0-.4-.08-1.04-.16-1.44a1.2 1.2 0 0 1-1.2.52 1.2 1.2 0 0 1-1.2-.52z" />
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/lovefonts" target="_blank" rel="noopener" title="Facebook"
+                class="w-10 h-10 rounded-full flex items-center justify-center border border-[#d0d0d0] text-[#555] no-underline transition-colors duration-200 hover:border-primary hover:text-primary">
+                <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- Blocks -->
+        <div class="flex flex-col gap-3">
+
+            <!-- Block 1: list — 字型安裝指南 -->
+            <a class="block-anim bg-white rounded-xl overflow-hidden shadow-sm no-underline text-inherit block transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                href="https://blog.justfont.com/2024/07/jf-font-installation-guide/" target="_blank" rel="noopener">
+                <div class="flex items-center gap-3 px-4 py-3.5">
+                    <div class="shrink-0 w-9 h-9 rounded-lg bg-[#f0f0f0] flex items-center justify-center text-[#555]">
+                        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                    </div>
+                    <span class="flex-1 text-sm font-medium text-[#333]">justfont 字型安裝指南</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Block 2: list fill — justfont monthly -->
+            <a class="block-anim bg-white rounded-xl overflow-hidden shadow-sm no-underline text-inherit block transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                href="https://blog.justfont.com/2026/04/justfont-monthly-sub/" target="_blank" rel="noopener">
+                <div class="flex items-stretch">
+                    <div
+                        class="shrink-0 w-9 h-9 rounded-lg bg-[#f0f0f0] flex items-center justify-center text-[#555] self-center ml-4">
+                        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 flex items-center px-4 py-3.5">
+                        <span class="text-sm font-medium text-[#333]">訂閱 justfont monthly，字體優惠搶先看</span>
+                    </div>
+                    <img class="shrink-0 w-[72px] h-[72px] object-cover rounded-r-xl"
+                        src="images/_1__items_0__image.jpg" alt="金萱生日慶優惠" />
+                </div>
+            </a>
+
+            <!-- Block 3: banner slider — 問卷折扣 (2 slides) -->
+            <div class="block-anim bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative w-full overflow-hidden" id="slider-3">
+                    <div class="flex transition-transform duration-[400ms] ease-in-out">
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://ref.justfont.com/Aiz4g9" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_2__items_0__image.jpg" alt="填問卷得折扣碼" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 right-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">填問卷得折扣碼</span>
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://justfont.typeform.com/boldvsthin" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_2__items_1__image.jpg" alt="5/3 前填問卷領折扣" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 left-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">🎟️
+                                    5/3 前，填問卷領折扣</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-[5px] py-2" id="dots-3">
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200 active"
+                        onclick="goSlide('slider-3','dots-3',0)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-3','dots-3',1)"></button>
+                </div>
+            </div>
+
+            <!-- Block 4: banner — TypeJam (1 slide) -->
+            <div class="block-anim bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative w-full overflow-hidden" id="slider-4">
+                    <div class="flex transition-transform duration-[400ms] ease-in-out">
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://typejam.justfont.com/" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_3__items_0__image.jpg" alt="TypeJam 免費下載" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 left-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">免費下載</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 5: banner — 造字鼓勵元 (1 slide) -->
+            <div class="block-anim bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative w-full overflow-hidden" id="slider-5">
+                    <div class="flex transition-transform duration-[400ms] ease-in-out">
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://ref.justfont.com/mnItYRx" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_4__items_0__image.jpg" alt="造字鼓勵元" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 left-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">7/12
+                                    截止</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 6: banner — 開源字型/辰宇落雁/粉圓芫荽 (3 slides) -->
+            <div class="block-anim bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative w-full overflow-hidden" id="slider-6">
+                    <div class="flex transition-transform duration-[400ms] ease-in-out">
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://bit.ly/3QkbiPI" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_5__items_0__image.jpg" alt="開源字型、免費字型" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://ref.justfont.com/t8qJO0g" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_5__items_1__image.jpg" alt="辰宇落雁體的故事" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 left-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">辰宇落雁體的故事</span>
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://ref.justfont.com/l7nT14h" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_5__items_2__image.jpg" alt="粉圓、芫荽免費載點" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 left-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">粉圓、芫荽免費載點</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-[5px] py-2" id="dots-6">
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200 active"
+                        onclick="goSlide('slider-6','dots-6',0)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-6','dots-6',1)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-6','dots-6',2)"></button>
+                </div>
+            </div>
+
+            <!-- Block 7: banner — IG 字體系列 (5 slides) -->
+            <div class="block-anim bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative w-full overflow-hidden" id="slider-7">
+                    <div class="flex transition-transform duration-[400ms] ease-in-out">
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://ref.justfont.com/ObgmXvd" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_6__items_0__image.jpg" alt="" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://bit.ly/4877hUY" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_6__items_1__image.jpg" alt="" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://bit.ly/48eLR8X" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_6__items_2__image.jpg" alt="IG 字體、限時動態" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 left-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">內含字體載點</span>
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://bit.ly/3ve40Fn" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_6__items_3__image.jpg" alt="IG 英文字體" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://bit.ly/42jWRQh" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_6__items_4__image.jpg" alt="" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-[5px] py-2" id="dots-7">
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200 active"
+                        onclick="goSlide('slider-7','dots-7',0)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-7','dots-7',1)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-7','dots-7',2)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-7','dots-7',3)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-7','dots-7',4)"></button>
+                </div>
+            </div>
+
+            <!-- Block 8: banner — 精靈文 (3 slides) -->
+            <div class="block-anim bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative w-full overflow-hidden" id="slider-8">
+                    <div class="flex transition-transform duration-[400ms] ease-in-out">
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://ref.justfont.com/lYttAsK" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_7__items_0__image.jpg" alt="" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://bit.ly/4hotnrK" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_7__items_1__image.jpg" alt="jf 精靈文｜台灣人專屬注音文" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                                <span
+                                    class="absolute bottom-2.5 right-2.5 px-2.5 py-1 bg-black/55 text-white text-[11px] font-semibold rounded backdrop-blur-sm leading-snug">載點＆教學</span>
+                            </a>
+                        </div>
+                        <div class="shrink-0 w-full aspect-[2/1] relative">
+                            <a href="https://ref.justfont.com/CcWTzbY" target="_blank" rel="noopener"
+                                class="block w-full h-full relative">
+                                <img src="images/_7__items_2__image.jpg" alt="" loading="lazy"
+                                    class="w-full h-full object-cover block" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-[5px] py-2" id="dots-8">
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200 active"
+                        onclick="goSlide('slider-8','dots-8',0)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-8','dots-8',1)"></button>
+                    <button
+                        class="dot w-1.5 h-1.5 rounded-full bg-[#d0d0d0] cursor-pointer border-0 transition-all duration-200"
+                        onclick="goSlide('slider-8','dots-8',2)"></button>
+                </div>
+            </div>
+
+            <!-- Block 9: list — LINE 加好友 -->
+            <a class="block-anim bg-white rounded-xl overflow-hidden shadow-sm no-underline text-inherit block transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                href="https://liff.line.me/1645278921-kWRPP32q/?accountId=justfont" target="_blank" rel="noopener">
+                <div class="flex items-center gap-3 px-4 py-3.5">
+                    <div class="shrink-0 w-9 h-9 rounded-lg bg-[#f0f0f0] flex items-center justify-center text-[#555]">
+                        <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+                        </svg>
+                    </div>
+                    <span class="flex-1 text-sm font-medium text-[#333]">加好友，不錯過課程＆優惠消息</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Block 10: double — 字體口袋書 / 字體課 -->
+            <div class="block-anim grid grid-cols-2 gap-2">
+                <a class="double-item rounded-xl overflow-hidden shadow-sm aspect-square block relative no-underline transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                    href="https://justfont.gitbook.io/pocketbook/" target="_blank" rel="noopener">
+                    <img src="images/_9__items_0__image.jpg" alt="字體口袋書" loading="lazy"
+                        class="w-full h-full object-cover block" />
+                </a>
+                <a class="double-item rounded-xl overflow-hidden shadow-sm aspect-square block relative no-underline transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                    href="https://blog.justfont.com/projects/edukit/" target="_blank" rel="noopener">
+                    <img src="images/_9__items_1__image.jpg" alt="字體課、造字課" loading="lazy"
+                        class="w-full h-full object-cover block" />
+                </a>
+            </div>
+
+            <!-- Block 11: double — 標準字設計 -->
+            <div class="block-anim grid grid-cols-2 gap-2">
+                <a class="double-item rounded-xl overflow-hidden shadow-sm aspect-square block relative no-underline transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                    href="https://ref.justfont.com/ZcFbiic" target="_blank" rel="noopener">
+                    <img src="images/_10__items_0__image.jpg" alt="標準字設計" loading="lazy"
+                        class="w-full h-full object-cover block" />
+                </a>
+                <a class="double-item rounded-xl overflow-hidden shadow-sm aspect-square block relative no-underline transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                    href="https://ref.justfont.com/q62sqv" target="_blank" rel="noopener">
+                    <img src="images/_10__items_1__image.jpg" alt="" loading="lazy"
+                        class="w-full h-full object-cover block" />
+                </a>
+            </div>
+
+            <!-- Block 12: double — 造字鼓勵元 / What'z ur type? -->
+            <div class="block-anim grid grid-cols-2 gap-2">
+                <a class="double-item rounded-xl overflow-hidden shadow-sm aspect-square block relative no-underline transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                    href="https://forms.gle/P4fmBWHswYJw9Vqp6" target="_blank" rel="noopener">
+                    <img src="images/_11__items_0__image.jpg" alt="造字鼓勵元" loading="lazy"
+                        class="w-full h-full object-cover block" />
+                </a>
+                <a class="double-item rounded-xl overflow-hidden shadow-sm aspect-square block relative no-underline transition-all duration-150 hover:-translate-y-px hover:shadow-md"
+                    href="https://ref.justfont.com/xvNi8sy" target="_blank" rel="noopener">
+                    <img src="images/_11__items_1__image.jpg" alt="What'z ur type?" loading="lazy"
+                        class="w-full h-full object-cover block" />
+                </a>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-8 text-xs text-[#aaa]">
+            <a href="https://portaly.cc" target="_blank" rel="noopener"
+                class="text-[#aaa] no-underline font-medium hover:text-primary transition-colors duration-200">由 Portaly
+                提供技術支援</a>
+        </div>
+
+    </div>
+
+    <script>
+        const sliderState = {};
+
+        function goSlide(sliderId, dotsId, index) {
+            const slider = document.getElementById(sliderId);
+            const track = slider.querySelector('.flex');
+            const slides = track.children;
+            const total = slides.length;
+            if (index < 0) index = total - 1;
+            if (index >= total) index = 0;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            sliderState[sliderId] = index;
+            if (dotsId) {
+                document.getElementById(dotsId).querySelectorAll('.dot')
+                    .forEach((d, i) => d.classList.toggle('active', i === index));
+            }
+        }
+
+        [
+            { id: 'slider-3', dotsId: 'dots-3', speed: 3000 },
+            { id: 'slider-6', dotsId: 'dots-6', speed: 5000 },
+            { id: 'slider-7', dotsId: 'dots-7', speed: 5000 },
+            { id: 'slider-8', dotsId: 'dots-8', speed: 3000 },
+        ].forEach(({ id, dotsId, speed }) => {
+            sliderState[id] = 0;
+            setInterval(() => goSlide(id, dotsId, (sliderState[id] || 0) + 1), speed);
+        });
+
+        document.querySelectorAll('[id^="slider-"]').forEach(slider => {
+            let startX = 0;
+            slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+            slider.addEventListener('touchend', e => {
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) < 40) return;
+                const id = slider.id;
+                const dotsEl = document.getElementById(id.replace('slider-', 'dots-'));
+                goSlide(id, dotsEl?.id ?? null, (sliderState[id] || 0) + (dx < 0 ? 1 : -1));
+            }, { passive: true });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.block-anim').forEach((el, i) => {
+            el.style.transitionDelay = `${i * 60}ms`;
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+
+</html>
